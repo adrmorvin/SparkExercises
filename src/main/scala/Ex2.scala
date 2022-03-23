@@ -19,6 +19,7 @@ object Ex2 {
       .option("header",true).option("sep",":")
       .save("src/main/resources/dataset/solution2")
 
+    //este output al final no es necesario, habría que borrarlo
     output
   }
 }
