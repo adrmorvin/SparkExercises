@@ -5,13 +5,15 @@ import org.apache.spark.sql.avro
 
 object Ex1 {
 
-
+//Para no repetir la lectura, me cree un Object en el
+  //que estaban todas las lecturas y aquí simplemente
+  //llamaba a dicha función
 
   def exercise1()(implicit sparkSession: SparkSession) ={
     val data = sparkSession.read
       .format("avro")
       .load("src/main/resources/retail_db/products_avro/*")
-
+//cambiar col por $ (opcional, para buenas prácticas. En los otros lo haces)
     val output = data.filter(col("product_name").startsWith("Nike")
       && col("product_price") <= 23 && col("product_price") >= 20)
     output.write.format("parquet")
